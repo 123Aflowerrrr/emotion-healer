@@ -44,7 +44,7 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
       {scene.bgVideo && (
         <video
           ref={videoRef}
-          src={import.meta.env.BASE_URL + scene.bgVideo.replace(/^\//, '')}
+          src={scene.bgVideo.startsWith('http') ? scene.bgVideo : import.meta.env.BASE_URL + scene.bgVideo.replace(/^\//, '')}
           loop
           muted={muted}
           playsInline
