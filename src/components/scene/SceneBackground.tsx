@@ -53,8 +53,8 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
         <div className={`absolute inset-0 ${scene.bgClass} animate-breathe`} />
       )}
 
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Light overlay for readability */}
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* Particles layer (只在无视频时显示，视频本身已有动态感) */}
       {!scene.bgVideo && (
