@@ -1,4 +1,18 @@
 // ============================================================
+// 自定义背景类型
+// ============================================================
+export type BackgroundType = 'default' | 'image' | 'video';
+
+export interface CustomBackground {
+  id: string;
+  sceneId: string;
+  type: BackgroundType;
+  name: string;
+  data: string;
+  createdAt: number;
+}
+
+// ============================================================
 // 场景类型
 // ============================================================
 export type SceneTheme = 'forest' | 'cafe' | 'seaside' | 'garden' | 'mountain';
@@ -10,6 +24,8 @@ export interface Scene {
   icon: string;
   theme: SceneTheme;
   bgClass: string;
+  bgImage?: string;   // 自定义背景图路径，如 /backgrounds/forest.jpg
+  bgVideo?: string;   // 自定义背景视频路径，如 /backgrounds/forest.mp4
   primaryColor: string;
   accentColor: string;
   ambientSounds: { type: string; label: string }[];

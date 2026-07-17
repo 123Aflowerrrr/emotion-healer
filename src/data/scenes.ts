@@ -8,6 +8,7 @@ export const SCENES: Scene[] = [
     icon: '🌲',
     theme: 'forest',
     bgClass: 'scene-forest',
+    bgVideo: '/backgrounds/1.mp4',
     primaryColor: '#4a7c4f',
     accentColor: '#8fbc8f',
     ambientSounds: [
@@ -24,6 +25,7 @@ export const SCENES: Scene[] = [
     icon: '☕',
     theme: 'cafe',
     bgClass: 'scene-cafe',
+    bgVideo: '/backgrounds/2.mp4',
     primaryColor: '#6b4530',
     accentColor: '#c4a45a',
     ambientSounds: [
@@ -39,6 +41,7 @@ export const SCENES: Scene[] = [
     icon: '🌊',
     theme: 'seaside',
     bgClass: 'scene-seaside',
+    bgVideo: '/backgrounds/3.mp4',
     primaryColor: '#4a8ab0',
     accentColor: '#7ab8d4',
     ambientSounds: [
@@ -54,6 +57,7 @@ export const SCENES: Scene[] = [
     icon: '🌸',
     theme: 'garden',
     bgClass: 'scene-garden',
+    bgVideo: '/backgrounds/4.mp4',
     primaryColor: '#6b3a7a',
     accentColor: '#c48aac',
     ambientSounds: [
@@ -69,6 +73,7 @@ export const SCENES: Scene[] = [
     icon: '🏔️',
     theme: 'mountain',
     bgClass: 'scene-mountain',
+    bgVideo: '/backgrounds/5.mp4',
     primaryColor: '#3a6a7a',
     accentColor: '#7ab8c8',
     ambientSounds: [

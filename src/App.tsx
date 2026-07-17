@@ -23,7 +23,7 @@ function App() {
   }, [loadEntries, loadSessions, loadSedonaSessions, loadSettings]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/emotion-healer">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<SceneSelectionPage />} />
