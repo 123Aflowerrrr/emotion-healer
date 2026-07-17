@@ -1,21 +1,28 @@
+import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { BottomNav } from './BottomNav';
 import { Toast } from '../ui/Toast';
-import { JournalSheet } from '../journal/JournalSheet';
-import { ChatSheet } from '../chat/ChatSheet';
-import { HistorySheet } from '../history/HistorySheet';
-import { SettingsSheet } from './SettingsSheet';
+import { useUIStore } from '../../stores/useUIStore';
+
+const JournalSheet = lazy(() => import('../journal/JournalSheet').then(m => ({ default: m.JournalSheet })));
+const ChatSheet = lazy(() => import('../chat/ChatSheet').then(m => ({ default: m.ChatSheet })));
+const HistorySheet = lazy(() => import('../history/HistorySheet').then(m => ({ default: m.HistorySheet })));
+const SettingsSheet = lazy(() => import('./SettingsSheet').then(m => ({ default: m.SettingsSheet })));
 
 export function Layout() {
+  const activeSheet = useUIStore((s) => s.activeSheet);
+
   return (
     <div className="min-h-screen bg-warm-50 relative overflow-hidden">
       <Outlet />
       <BottomNav />
       <Toast />
-      <JournalSheet />
-      <ChatSheet />
-      <HistorySheet />
-      <SettingsSheet />
+      <Suspense fallback={null}>
+        {activeSheet === 'journal' && <JournalSheet />}
+        {activeSheet === 'chat' && <ChatSheet />}
+        {activeSheet === 'history' && <HistorySheet />}
+        {activeSheet === 'settings' && <SettingsSheet />}
+      </Suspense>
     </div>
   );
 }
