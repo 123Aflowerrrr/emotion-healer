@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  body {
+    @apply bg-warm-50 text-warm-800 font-sans;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    @apply min-h-screen max-w-lg mx-auto relative;
+    box-shadow: 0 0 60px rgba(0,0,0,0.05);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@layer components {
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md rounded-3xl border border-white/50 shadow-lg;
+  }
+
+  .warm-btn {
+    @apply px-6 py-3 rounded-2xl font-medium text-white
+      bg-warm-500 hover:bg-warm-600 active:bg-warm-700
+      transition-all duration-200 active:scale-95
+      shadow-md shadow-warm-500/20;
+  }
+
+  .ghost-btn {
+    @apply px-6 py-3 rounded-2xl font-medium
+      text-warm-600 hover:bg-warm-100 active:bg-warm-200
+      transition-all duration-200 active:scale-95;
+  }
+
+  .sheet-overlay {
+    @apply fixed inset-0 bg-black/20 backdrop-blur-sm z-40;
+  }
+
+  .sheet-content {
+    @apply fixed bottom-0 left-0 right-0 z-50
+      bg-white/95 backdrop-blur-xl rounded-t-[2rem]
+      shadow-2xl safe-bottom
+      max-w-lg mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Scene-specific gradient backgrounds */
+.scene-forest {
+  background: linear-gradient(180deg, #1a2f1d 0%, #2d4a2f 20%, #4a7c4f 40%, #8fbc8f 60%, #c5e0c5 80%, #e8f5e8 100%);
+}
+.scene-cafe {
+  background: linear-gradient(180deg, #2c1810 0%, #4a3020 20%, #6b4530 40%, #8b6914 60%, #c4a45a 80%, #f5e6c8 100%);
+}
+.scene-seaside {
+  background: linear-gradient(180deg, #1a3a5c 0%, #2a5a8c 20%, #4a8ab0 40%, #7ab8d4 60%, #b8dce8 80%, #e8f4f8 100%);
+}
+.scene-garden {
+  background: linear-gradient(180deg, #2a1a3a 0%, #4a2a5a 20%, #6b3a7a 40%, #c48aac 60%, #e8c8d8 80%, #f8e8f0 100%);
+}
+.scene-mountain {
+  background: linear-gradient(180deg, #1a2a3a 0%, #2a4a5a 20%, #3a6a7a 40%, #7ab8c8 60%, #b8dce8 80%, #e8f4f8 100%);
+}
+
+/* Firefly particles */
+.firefly {
+  @apply absolute rounded-full;
+  background: radial-gradient(circle, rgba(255,255,180,0.8) 0%, rgba(255,255,180,0) 70%);
+  animation: firefly 4s ease-in-out infinite;
+}
+
+/* Rain drops */
+.rain-drop {
+  @apply absolute w-0.5 bg-white/30 rounded-full;
+  animation: rain 1.5s linear infinite;
+}
+
+/* Sparkle particles */
+.sparkle-particle {
+  @apply absolute w-1 h-1 bg-white rounded-full;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Breathing circle for Sedona */
+.breath-circle {
+  @apply w-40 h-40 rounded-full border-2 mx-auto;
+  border-color: rgba(180,130,100,0.3);
+  transition: all 0.3s ease;
+}
+.breath-circle.inhale {
+  animation: inhale 4s ease-in-out forwards;
+  border-color: rgba(180,130,100,0.5);
+}
+.breath-circle.hold {
+  animation: hold 7s ease-in-out;
+  border-color: rgba(180,130,100,0.7);
+}
+.breath-circle.exhale {
+  animation: exhale 8s ease-in-out forwards;
+  border-color: rgba(180,130,100,0.4);
+}
+
+/* Floating hearts on tap */
+.tap-heart {
+  animation: heartFloat 2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Chat bubble styles */
+.chat-bubble-user {
+  @apply bg-warm-400 text-white rounded-2xl rounded-br-md px-4 py-2.5 ml-12;
+}
+.chat-bubble-ai {
+  @apply bg-white/80 text-warm-800 rounded-2xl rounded-bl-md px-4 py-2.5 mr-12 shadow-sm;
+}
+
+/* Bottom sheet drag handle */
+.drag-handle {
+  @apply w-10 h-1.5 bg-warm-200 rounded-full mx-auto my-3;
+}
+
+/* Mood card animations */
+.mood-card {
+  @apply transition-all duration-300 cursor-pointer;
+}
+.mood-card:hover {
+  @apply -translate-y-1;
+}
+.mood-card.selected {
+  @apply scale-110 -translate-y-2 shadow-xl ring-2 ring-warm-400/50;
+}
