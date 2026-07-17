@@ -8,6 +8,7 @@ interface SceneBackgroundProps {
 export function SceneBackground({ scene }: SceneBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     setVideoReady(false);
@@ -53,7 +54,7 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
           ref={videoRef}
           src={import.meta.env.BASE_URL + scene.bgVideo.replace(/^\//, '')}
           loop
-          muted
+          muted={muted}
           playsInline
           disableRemotePlayback
           preload="metadata"
@@ -111,6 +112,16 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
               }} />
             ))}
         </div>
+      )}
+
+      {/* Sound toggle button */}
+      {scene.bgVideo && videoReady && (
+        <button
+          onClick={() => setMuted(!muted)}
+          className="absolute top-20 right-4 z-20 w-10 h-10 rounded-full bg-white/40 backdrop-blur-sm flex items-center justify-center text-lg shadow-sm active:scale-90 transition-transform"
+        >
+          {muted ? '🔇' : '🔊'}
+        </button>
       )}
     </div>
   );
