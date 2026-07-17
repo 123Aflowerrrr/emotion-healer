@@ -31,7 +31,7 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
       {scene.bgVideo && (
         <video
           ref={videoRef}
-          src={scene.bgVideo}
+          src={import.meta.env.BASE_URL + scene.bgVideo.replace(/^\//, '')}
           autoPlay
           loop
           muted
@@ -44,7 +44,7 @@ export function SceneBackground({ scene }: SceneBackgroundProps) {
       {scene.bgImage && !scene.bgVideo && (
         <div
           className="absolute inset-0 bg-cover bg-center animate-breathe"
-          style={{ backgroundImage: `url(${scene.bgImage})` }}
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${scene.bgImage.replace(/^\//, '')})` }}
         />
       )}
 
