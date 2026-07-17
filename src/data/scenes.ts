@@ -23,7 +23,7 @@ export const SCENES: Scene[] = [
   {
     id: 'cafe',
     name: '街角咖啡厅',
-    description: '窗外下着小雨，咖啡的香气在空气中弥漫。找一个靠窗的位置，写下你此刻的心情。',
+    description: '阳光漫过街角，咖啡的香气在风里轻晃，找一处露天座位，写下你此刻的心情。',
     icon: '☕',
     theme: 'cafe',
     bgClass: 'scene-cafe',
@@ -39,7 +39,7 @@ export const SCENES: Scene[] = [
   {
     id: 'seaside',
     name: '海边小屋',
-    description: '海浪轻轻拍打着沙滩，夕阳把海面染成金色。在这里，让所有烦恼都随海浪远去。',
+    description: '微风轻拂过海面，帆船载着光影缓缓前行。在这里，所有烦恼都随海浪远去。',
     icon: '🌊',
     theme: 'seaside',
     bgClass: 'scene-seaside',
