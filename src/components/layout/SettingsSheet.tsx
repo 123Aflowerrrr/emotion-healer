@@ -1,22 +1,14 @@
-import { useState } from 'react';
 import { useUIStore } from '../../stores/useUIStore';
 import { useSettingsStore } from '../../stores/useSettingsStore';
 import { useAnimalStore } from '../../stores/useAnimalStore';
 
 export function SettingsSheet() {
   const { activeSheet, closeSheet } = useUIStore();
-  const { settings, updateSettings } = useSettingsStore();
+  const { updateSettings } = useSettingsStore();
   const { companions, activeCompanion, setActiveCompanion } = useAnimalStore();
-
-  const [localSettings, setLocalSettings] = useState(settings);
 
   const isOpen = activeSheet === 'settings';
   if (!isOpen) return null;
-
-  const handleSave = () => {
-    updateSettings(localSettings);
-    closeSheet();
-  };
 
   return (
     <>
@@ -26,55 +18,10 @@ export function SettingsSheet() {
 
         <div className="flex items-center justify-between px-5 py-2 border-b border-warm-100">
           <h3 className="text-lg font-serif text-warm-800">设置</h3>
-          <button onClick={handleSave} className="text-sm text-warm-500 font-medium">完成</button>
+          <button onClick={closeSheet} className="text-sm text-warm-500 font-medium">完成</button>
         </div>
 
         <div className="overflow-y-auto px-5 py-4 space-y-6" style={{ maxHeight: '70vh' }}>
-          {/* AI Configuration */}
-          <section>
-            <h4 className="text-sm font-medium text-warm-600 mb-3 flex items-center gap-2">
-              <span>🤖</span> AI 伙伴配置
-            </h4>
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs text-warm-400 mb-1 block">API 地址</label>
-                <input
-                  type="text"
-                  value={localSettings.aiEndpoint}
-                  onChange={(e) => setLocalSettings((s) => ({ ...s, aiEndpoint: e.target.value }))}
-                  placeholder="https://api.openai.com/v1/chat/completions"
-                  className="w-full px-3 py-2 rounded-xl bg-warm-50 border border-warm-100 text-sm text-warm-700
-                    focus:outline-none focus:border-warm-300"
-                />
-                <p className="text-xs text-warm-300 mt-1">
-                  支持 OpenAI 兼容接口（豆包API可用此格式）
-                </p>
-              </div>
-              <div>
-                <label className="text-xs text-warm-400 mb-1 block">API Key</label>
-                <input
-                  type="password"
-                  value={localSettings.aiApiKey}
-                  onChange={(e) => setLocalSettings((s) => ({ ...s, aiApiKey: e.target.value }))}
-                  placeholder="sk-..."
-                  className="w-full px-3 py-2 rounded-xl bg-warm-50 border border-warm-100 text-sm text-warm-700
-                    focus:outline-none focus:border-warm-300"
-                />
-              </div>
-              <div>
-                <label className="text-xs text-warm-400 mb-1 block">模型名称</label>
-                <input
-                  type="text"
-                  value={localSettings.aiModel}
-                  onChange={(e) => setLocalSettings((s) => ({ ...s, aiModel: e.target.value }))}
-                  placeholder="gpt-3.5-turbo"
-                  className="w-full px-3 py-2 rounded-xl bg-warm-50 border border-warm-100 text-sm text-warm-700
-                    focus:outline-none focus:border-warm-300"
-                />
-              </div>
-            </div>
-          </section>
-
           {/* Companion Selection */}
           <section>
             <h4 className="text-sm font-medium text-warm-600 mb-3 flex items-center gap-2">

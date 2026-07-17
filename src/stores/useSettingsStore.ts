@@ -4,10 +4,6 @@ import type { AppSettings } from '../types';
 const DEFAULT_SETTINGS: AppSettings = {
   theme: 'light',
   soundEnabled: false,
-  aiProvider: 'custom',
-  aiEndpoint: 'https://api.openai.com/v1/chat/completions',
-  aiApiKey: '',
-  aiModel: 'gpt-3.5-turbo',
   selectedCompanionId: 'cat',
   firstLaunchComplete: false,
 };
@@ -19,7 +15,7 @@ interface SettingsStore {
   isAIConfigured: () => boolean;
 }
 
-export const useSettingsStore = create<SettingsStore>((set, get) => ({
+export const useSettingsStore = create<SettingsStore>((set) => ({
   settings: { ...DEFAULT_SETTINGS },
 
   loadSettings: () => {
@@ -42,8 +38,5 @@ export const useSettingsStore = create<SettingsStore>((set, get) => ({
     });
   },
 
-  isAIConfigured: () => {
-    const { aiApiKey, aiEndpoint } = get().settings;
-    return aiApiKey.length > 0 && aiEndpoint.length > 0;
-  },
+  isAIConfigured: () => false,
 }));

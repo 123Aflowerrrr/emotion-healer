@@ -2,13 +2,12 @@ import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { useEmotionStore } from './stores/useEmotionStore';
-import { useChatStore } from './stores/useChatStore';
 import { useReleaseStore } from './stores/useReleaseStore';
 import { useSettingsStore } from './stores/useSettingsStore';
 
-const SceneSelectionPage = lazy(() => import('./pages/SceneSelectionPage'));
-const ScenePage = lazy(() => import('./pages/ScenePage'));
-const ReleasePage = lazy(() => import('./pages/ReleasePage'));
+const SceneSelectionPage = lazy(() => import('./pages/SceneSelectionPage').then(m => ({ default: m.SceneSelectionPage })));
+const ScenePage = lazy(() => import('./pages/ScenePage').then(m => ({ default: m.ScenePage })));
+const ReleasePage = lazy(() => import('./pages/ReleasePage').then(m => ({ default: m.ReleasePage })));
 
 function PageLoading() {
   return (
@@ -23,16 +22,14 @@ function PageLoading() {
 
 function App() {
   const loadEntries = useEmotionStore((s) => s.loadEntries);
-  const loadSessions = useChatStore((s) => s.loadSessions);
   const loadSedonaSessions = useReleaseStore((s) => s.loadSessions);
   const loadSettings = useSettingsStore((s) => s.loadSettings);
 
   useEffect(() => {
     loadSettings();
     loadEntries();
-    loadSessions();
     loadSedonaSessions();
-  }, [loadEntries, loadSessions, loadSedonaSessions, loadSettings]);
+  }, [loadEntries, loadSedonaSessions, loadSettings]);
 
   return (
     <BrowserRouter basename="/emotion-healer">

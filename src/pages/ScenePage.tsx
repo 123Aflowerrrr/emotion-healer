@@ -85,19 +85,6 @@ export function ScenePage() {
         </button>
 
         <button
-          onClick={() => openSheet('chat')}
-          className="flex flex-col items-center gap-1.5 group"
-        >
-          <div className="w-16 h-16 rounded-2xl bg-white/75 backdrop-blur-md shadow-lg flex items-center justify-center text-2xl
-            transition-all duration-200 group-active:scale-95 group-hover:shadow-xl border border-white/50">
-            💬
-          </div>
-          <span className="text-xs text-white font-medium drop-shadow-md bg-black/20 px-2 py-0.5 rounded-full">
-            AI 陪伴
-          </span>
-        </button>
-
-        <button
           onClick={() => navigate(`/release?sceneId=${scene.id}`)}
           className="flex flex-col items-center gap-1.5 group"
         >

@@ -5,7 +5,6 @@ import type { SheetType } from '../../types';
 const NAV_ITEMS: { icon: string; label: string; sheet: SheetType; path?: string }[] = [
   { icon: '🏠', label: '场景', sheet: null, path: '/' },
   { icon: '📝', label: '日记', sheet: 'journal' },
-  { icon: '💬', label: '倾诉', sheet: 'chat' },
   { icon: '🧘', label: '释放', sheet: null, path: '/release' },
   { icon: '📊', label: '轨迹', sheet: 'history' },
 ];

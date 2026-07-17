@@ -92,28 +92,6 @@ export interface AnimalCompanion {
 }
 
 // ============================================================
-// 对话类型
-// ============================================================
-export type ChatRole = 'user' | 'assistant' | 'system';
-
-export interface ChatMessage {
-  id: string;
-  sessionId: string;
-  timestamp: number;
-  role: ChatRole;
-  content: string;
-}
-
-export interface ChatSession {
-  id: string;
-  sceneId: string;
-  title: string;
-  messages: ChatMessage[];
-  createdAt: number;
-  updatedAt: number;
-}
-
-// ============================================================
 // 圣多纳释放法类型
 // ============================================================
 export type SedonaStep = 'allow' | 'welcome' | 'could' | 'would' | 'when';
@@ -142,15 +120,10 @@ export interface SedonaSession {
 // ============================================================
 // 设置类型
 // ============================================================
-export type AIProvider = 'doubao' | 'openai' | 'custom';
 
 export interface AppSettings {
   theme: 'light' | 'dark';
   soundEnabled: boolean;
-  aiProvider: AIProvider;
-  aiEndpoint: string;
-  aiApiKey: string;
-  aiModel: string;
   selectedCompanionId: string;
   firstLaunchComplete: boolean;
 }
@@ -158,4 +131,4 @@ export interface AppSettings {
 // ============================================================
 // UI 类型
 // ============================================================
-export type SheetType = 'journal' | 'chat' | 'history' | 'settings' | 'companion' | null;
+export type SheetType = 'journal' | 'history' | 'settings' | 'companion' | null;

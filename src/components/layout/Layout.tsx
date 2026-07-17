@@ -5,7 +5,6 @@ import { Toast } from '../ui/Toast';
 import { useUIStore } from '../../stores/useUIStore';
 
 const JournalSheet = lazy(() => import('../journal/JournalSheet').then(m => ({ default: m.JournalSheet })));
-const ChatSheet = lazy(() => import('../chat/ChatSheet').then(m => ({ default: m.ChatSheet })));
 const HistorySheet = lazy(() => import('../history/HistorySheet').then(m => ({ default: m.HistorySheet })));
 const SettingsSheet = lazy(() => import('./SettingsSheet').then(m => ({ default: m.SettingsSheet })));
 
@@ -19,7 +18,6 @@ export function Layout() {
       <Toast />
       <Suspense fallback={null}>
         {activeSheet === 'journal' && <JournalSheet />}
-        {activeSheet === 'chat' && <ChatSheet />}
         {activeSheet === 'history' && <HistorySheet />}
         {activeSheet === 'settings' && <SettingsSheet />}
       </Suspense>
